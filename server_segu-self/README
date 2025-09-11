@@ -1,0 +1,110 @@
+# Backend del Proyecto de Alertas y Reportes
+
+Este repositorio contiene el backend para el sistema de gestión de alertas y reportes. La API está desarrollada con **FastAPI** y **SQLModel**, y se conecta a una base de datos **MySQL** para gestionar las entidades de Usuarios, Reportes y Advertencias.
+
+## Prerequisitos (Requisitos Previos) 📋
+
+Antes de comenzar, asegúrate de tener instalado lo siguiente en tu sistema:
+
+- **Python 3.8 o superior**
+- **pip** (el gestor de paquetes de Python)
+- **Git**
+- Un servidor de **MySQL** en funcionamiento (localmente o en un servidor remoto).
+
+---
+
+## 🚀 Instalación y Configuración
+
+Sigue estos pasos para tener el proyecto funcionando en tu máquina local.
+
+### 1. Clonar el Repositorio
+
+Abre tu terminal, navega al directorio donde quieras guardar el proyecto y clona este repositorio.
+
+```bash
+git clone [URL_DE_TU_REPOSITORIO_GIT]
+cd [NOMBRE_DE_LA_CARPETA_DEL_PROYECTO]
+```
+
+### 2\. Crear y Activar un Entorno Virtual
+
+Es una buena práctica trabajar dentro de un entorno virtual para aislar las dependencias del proyecto.
+
+```bash
+# Crear el entorno virtual (puedes nombrarlo 'venv' o como prefieras)
+python -m venv venv
+```
+
+Ahora, activa el entorno. El comando varía según tu sistema operativo:
+
+- **En Windows (PowerShell/CMD):**
+
+  ```bash
+  .\venv\Scripts\activate
+  ```
+
+- **En macOS / Linux:**
+
+  ```bash
+  source venv/bin/activate
+  ```
+
+Una vez activado, verás `(venv)` al principio de la línea de tu terminal.
+
+### 3\. Instalar las Dependencias 📦
+
+Con el entorno virtual activado, instala todas las librerías necesarias ejecutando el siguiente comando. Este comando leerá el archivo `requirements.txt` y las instalará automáticamente.
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4\. Configurar las Variables de Entorno ⚙️
+
+Las credenciales de la base de datos y otras configuraciones sensibles se manejan a través de un archivo `.env`.
+
+1.  Busca el archivo llamado `.env.example` en la raíz del proyecto. Si no existe, crea un archivo llamado `.env`.
+2.  Copia el contenido de `.env.example` a un nuevo archivo llamado `.env` o simplemente renómbralo.
+3.  Abre el archivo `.env` y rellena los valores con tus propias credenciales de la base de datos MySQL.
+
+**Ejemplo del contenido del archivo `.env`:**
+
+```env
+# Variables de entorno para la Base de Datos
+DB_USER="tu_usuario_mysql"
+DB_PASSWORD="tu_contraseña_segura"
+DB_HOST="localhost"
+DB_PORT="3306"
+DB_NAME="nombre_de_tu_base_de_datos"
+```
+
+---
+
+## ▶️ Ejecutar la Aplicación
+
+Una vez que todo esté instalado y configurado, puedes iniciar el servidor de desarrollo con el siguiente comando:
+
+```bash
+fastapi dev app/main.py
+```
+
+- `main`: Se refiere al archivo `main.py`.
+- `app`: Es el objeto `FastAPI` creado dentro de `main.py`.
+
+El servidor estará funcionando en `http://127.0.0.1:8000`.
+
+### Verificar que todo funciona
+
+- Abre tu navegador y ve a **`http://127.0.0.1:8000`**. Deberías ver un mensaje de bienvenida en formato JSON.
+- Para interactuar con la API, accede a la documentación automática de Swagger UI en **`http://127.0.0.1:8000/docs`**.
+
+---
+
+## 📁 Estructura del Proyecto
+
+- `/models`: Contiene las definiciones de las tablas de la base de datos (SQLModel).
+- `/schemas`: Contiene los modelos de datos para validar la entrada y salida de la API (Pydantic).
+- `/routers`: Contiene la lógica de los endpoints de la API, separados por entidad.
+- `/core`: Contiene la configuración central, la conexión a la base de datos y otras utilidades.
+- `main.py`: Es el punto de entrada principal de la aplicación FastAPI.
+- `requirements.txt`: Lista de todas las dependencias de Python.
